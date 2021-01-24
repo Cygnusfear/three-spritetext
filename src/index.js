@@ -21,6 +21,7 @@ export default class extends three.Sprite {
     this._text = `${text}`;
     this._textHeight = textHeight;
     this._color = color;
+    this._circleBackground = false;
     this._backgroundColor = false; // no background color
 
     this._padding = 0;
@@ -49,6 +50,8 @@ export default class extends three.Sprite {
   set color(color) { this._color = color; this._genCanvas(); }
   get backgroundColor() { return this._backgroundColor; }
   set backgroundColor(color) { this._backgroundColor = color; this._genCanvas(); }
+  get circleBackground() { return this._circleBackground; }
+  set circleBackground(boolean) { this._circleBackground = boolean; this._genCanvas(); }
   get padding() { return this._padding; }
   set padding(padding) { this._padding = padding; this._genCanvas(); }
   get borderWidth() { return this._borderWidth; }
@@ -115,7 +118,16 @@ export default class extends three.Sprite {
     // paint background
     if (this.backgroundColor) {
       ctx.fillStyle = this.backgroundColor;
-      ctx.fillRect(0, 0, canvas.width - relBorder[0] * 2, canvas.height - relBorder[1] * 2);
+      if (this.circleBackground)
+      {
+        ctx.fillRect(0, 0, canvas.width - relBorder[0] * 2, canvas.height - relBorder[1] * 2);
+      }
+      else {
+        ctx.beginPath();
+        ctx.ellipse(canvas.width/2,canvas.height/2,canvas.width/2, canvas.height/2, Math.PI, 0, Math.PI);
+        ctx.fill();
+        ctx.closePath();
+      }
     }
 
     ctx.translate(...relPadding);
@@ -155,6 +167,7 @@ export default class extends three.Sprite {
     three.Sprite.prototype.copy.call(this, source);
 
     this.color = source.color;
+    this.circleBackground = source.circleBackground;
     this.backgroundColor = source.backgroundColor;
     this.padding = source.padding;
     this.borderWidth = source.borderWidth;
