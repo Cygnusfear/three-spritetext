@@ -13,6 +13,8 @@ declare class SpriteText extends Sprite {
   set textHeight(height: number);
   get color(): string;
   set color(color:string);
+  get backgroundCircle(): Booolean;
+  set backgroundCircle(flag: Boolean);
   get backgroundColor(): string;
   set backgroundColor(color:string);
   get fontFace(): string;
