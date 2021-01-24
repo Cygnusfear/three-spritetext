@@ -124,7 +124,7 @@ export default class extends three.Sprite {
       }
       else {
         ctx.beginPath();
-        ctx.ellipse(canvas.width/2,canvas.height/2,canvas.width/2, canvas.height/2, Math.PI, 0, Math.PI);
+        ctx.arc(canvas.width/2,canvas.height/2,canvas.width/2, 0, 2 * Math.PI, false);
         ctx.fill();
         ctx.closePath();
       }
