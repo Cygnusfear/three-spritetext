@@ -11,6 +11,8 @@ declare class SpriteText extends Sprite {
   set text(text: string);
   get textHeight(): number;
   set textHeight(height: number);
+  get textOffset(): number[];
+  set textOffset(offset: number[]);
   get color(): string;
   set color(color:string);
   get backgroundCircle(): Booolean;
