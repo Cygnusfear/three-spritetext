@@ -48,7 +48,7 @@ export default class extends three.Sprite {
   get textHeight() { return this._textHeight; }
   set textHeight(textHeight) { this._textHeight = textHeight; this._genCanvas(); }
   get textOffset() { return this._textOffset; }
-  set textOffset(textHeight) { this._textOffset = textOffset; this._genCanvas(); }
+  set textOffset(textOffset) { this._textOffset = textOffset; this._genCanvas(); }
   get color() { return this._color; }
   set color(color) { this._color = color; this._genCanvas(); }
   get backgroundColor() { return this._backgroundColor; }
@@ -138,7 +138,7 @@ export default class extends three.Sprite {
     // paint text
     ctx.font = font; // Set font again after canvas is resized, as context properties are reset
     ctx.fillStyle = this.color;
-    ctx.textBaseline = 'alphabetic';
+    ctx.textBaseline = 'bottom';
 
     const drawTextStroke = this.strokeWidth > 0;
     if (drawTextStroke) {
