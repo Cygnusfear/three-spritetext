@@ -135,7 +135,7 @@ export default class extends three.Sprite {
     // paint text
     ctx.font = font; // Set font again after canvas is resized, as context properties are reset
     ctx.fillStyle = this.color;
-    ctx.textBaseline = 'bottom';
+    ctx.textBaseline = 'alphabetic';
 
     const drawTextStroke = this.strokeWidth > 0;
     if (drawTextStroke) {
