@@ -20,6 +20,7 @@ export default class extends three.Sprite {
 
     this._text = `${text}`;
     this._textHeight = textHeight;
+    this._textOffset = [0,0];
     this._color = color;
     this._circleBackground = false;
     this._backgroundColor = false; // no background color
@@ -46,6 +47,8 @@ export default class extends three.Sprite {
   set text(text) { this._text = text; this._genCanvas(); }
   get textHeight() { return this._textHeight; }
   set textHeight(textHeight) { this._textHeight = textHeight; this._genCanvas(); }
+  get textOffset() { return this._textOffset; }
+  set textOffset(textHeight) { this._textOffset = textOffset; this._genCanvas(); }
   get color() { return this._color; }
   set color(color) { this._color = color; this._genCanvas(); }
   get backgroundColor() { return this._backgroundColor; }
@@ -148,7 +151,7 @@ export default class extends three.Sprite {
       const lineY = (index + 1) * this.fontSize;
 
       drawTextStroke && ctx.strokeText(line, lineX, lineY);
-      ctx.fillText(line, lineX, lineY);
+      ctx.fillText(line, lineX+this.textOffset[0], lineY+this.textOffset[1]);
     });
 
     // Inject canvas into sprite
